@@ -1,4 +1,4 @@
-require('./model/db');
+
 
 const express=require('express');
 const morgan=require('morgan');
