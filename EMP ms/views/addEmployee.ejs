@@ -44,21 +44,36 @@
         
 
         <div class="form-row">
+            <div class="form-group col-md-6">
             <label>City</label>
             <input type="text" class="form-control" name="city" placeholder="City">
+           </div>
         </div>
         <div class="form-row">
-           
+            <div class="form-group col-md-8">
+                <label>Select Gender: </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                 
+            
+                <input type="radio" name="gender" value="male"> Male &nbsp;&nbsp;
+                <input type="radio" name="gender" value="female"> Female &nbsp;&nbsp;
+                <input type="radio" name="gender" value="other"> Other
+            </div>
+           </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label>Department</label>
                 <input type="text" class="form-control" name="departmentName" placeholder="Department Name" >
             </div>
+        </div>
             
             
-        <br>
-    
+  
     <div class="form-group">
-        <button type="submit" class="btn btn-info"><i class="fa fa-database"></i> Submit</button>
+        <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-info"><i class="fa fa-database"></i> Submit</button>&nbsp;&nbsp;
         <a class="btn btn-secondary" href="/employee/list"><i class="fa fa-list-alt"></i> View All</a>
+        </div>
     </div>
     </div>
    

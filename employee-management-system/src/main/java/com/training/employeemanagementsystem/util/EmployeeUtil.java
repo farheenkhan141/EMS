@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.mapping.Set;
 import org.springframework.stereotype.Component;
 
+import com.training.employeemanagementsystem.constant.Gender;
 import com.training.employeemanagementsystem.dto.CreateEmployeeRequest;
 import com.training.employeemanagementsystem.dto.EmployeeDetails;
 import com.training.employeemanagementsystem.dto.UpdateEmployeeRequest;
+import com.training.employeemanagementsystem.model.Department;
 import com.training.employeemanagementsystem.model.Employee;
 
 @Component
@@ -22,8 +25,9 @@ public class EmployeeUtil {
 		details.setId(employee.getId());
 		details.setCity(employee.getCity());
 		details.setMobile(employee.getMobile());
-		details.setDepartmentName(employee.getDepartmentName());
-		
+		Department dept=employee.getDepartment();
+		details.setDepartmentName(dept.getDepartmentName());
+		details.setGender(employee.getGender().toString());		
 		return details;
 	}
 
@@ -39,12 +43,13 @@ public class EmployeeUtil {
 	}
 
 	public Employee requestToEmployee(CreateEmployeeRequest request) {
+		
 		Employee employee = new Employee();
 		employee.setEmail(request.getEmail());
 		employee.setFirstName(request.getFirstName());
 		employee.setLastName(request.getLastName());
 		employee.setMobile(request.getMobile());
-employee.setDepartmentName(request.getDepartmentName());
+		employee.setGender(Gender.toEnum(request.getGender()));
 		employee.setCity(request.getCity());
 
 		return employee;
@@ -68,10 +73,6 @@ employee.setDepartmentName(request.getDepartmentName());
 	if(request.getMobile()!=0) {
 		employee.setMobile(request.getMobile());
 	}
-	if(request.getDepartmentName()!=null) {
-		employee.setDepartmentName(request.getDepartmentName());
-	}
-	
 	
 		
 		return employee;

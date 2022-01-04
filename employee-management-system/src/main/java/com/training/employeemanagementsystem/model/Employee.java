@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import com.training.employeemanagementsystem.constant.Gender;
 
 import lombok.Data;
 
@@ -40,16 +41,14 @@ public class Employee {
 	@Column(name = "mobile")
 	private double mobile;
 	
-	@Column(name="city")
+	@Column(name = "city")
 	private String city;
 	
-	@Column(name = "department_name")
-	private String departmentName;
-
-
+	@Column(name="gender")
+	private Gender gender;
 	
-
-
-	
+	@JoinColumn(name="deptid")
+    @ManyToOne(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    private Department department;
 
 }

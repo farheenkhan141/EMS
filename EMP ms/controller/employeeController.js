@@ -12,9 +12,11 @@ function insertRecord(req, res) {
           email:req.body.email,
           mobile:req.body.mobile,
           city:req.body.city,
+          gender:req.body.gender,
           departmentName:req.body.departmentName
         }
       }).then(function(employee){
+        console.log(employee.data);
         res.redirect("/employee/list");
     })     
       
@@ -34,6 +36,7 @@ function update(req,res,eid) {
           email:req.body.email,
           mobile:req.body.mobile,
           city:req.body.city,
+          gender:req.body.gender,
           departmentName:req.body.departmentName,
          
 

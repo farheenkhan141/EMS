@@ -1,8 +1,8 @@
 package com.training.employeemanagementsystem.exceptions;
 
 public class EmployeeNotFoundException extends RuntimeException {
-	public void EmployeeNotFoundException(String msg) {
-		
+	public  EmployeeNotFoundException(String msg) {
+		super(msg);
 		System.out.println(msg);
 	}
 	

@@ -10,7 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.training.employeemanagementsystem.dto.CreateEmployeeRequest;
 import com.training.employeemanagementsystem.dto.EmployeeDetails;
 import com.training.employeemanagementsystem.dto.UpdateEmployeeRequest;
-
+import com.training.employeemanagementsystem.exceptions.EmployeeNotFoundException;
+import com.training.employeemanagementsystem.model.Department;
 import com.training.employeemanagementsystem.model.Employee;
 import com.training.employeemanagementsystem.repository.IEmployeeRepository;
 import com.training.employeemanagementsystem.util.EmployeeUtil;
@@ -28,9 +29,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	@Override
 	public EmployeeDetails addEmployee(CreateEmployeeRequest request) {
 		Employee employee;
-
+		Department dept=new Department();
+		dept.setDepartmentName(request.getDepartmentName());
 		employee= empUtil.requestToEmployee(request);
-		
+		employee.setDepartment(dept);
 		EmployeeDetails details = empUtil.toDetails(repo.save(employee));
 		return details;
 	}
@@ -59,14 +61,21 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 	@Override
 	public EmployeeDetails findEmployeeById(int id) {
-		Optional<Employee> optional = repo.findById(id);
-		EmployeeDetails details = empUtil.toDetails(optional.get());
+		Optional<Employee> employee = repo.findById(id);
+		if(!employee.isPresent()) {
+			throw new EmployeeNotFoundException("No such employee is in db with this id :"+id);
+		}
+		
+		EmployeeDetails details = empUtil.toDetails(employee.get());
 		return details;
 	}
 
 	@Override
 	public void deleteEmployee(int id) {
 		Optional<Employee> employee = repo.findById(id);
+		if(!employee.isPresent()) {
+			throw new EmployeeNotFoundException("No such employee is in db with this id :"+id);
+		}
 		repo.delete(employee.get());
 	}
 

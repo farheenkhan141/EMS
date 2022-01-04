@@ -13,7 +13,7 @@ router.get('/',(req,res)=>{
 
 //adding data 
 router.post('/add', (req, res) => {
-    console.log(req.body.departmentName);
+    
  controller.insertRecord(req,res);
 });
 

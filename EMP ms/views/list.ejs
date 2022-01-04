@@ -30,6 +30,7 @@
             <th>Mobile</th>
             <th>Department</th>
             <th>City</th>
+            <th>Gender</th>
             <th></th>
         </tr>
     </thead>
@@ -43,6 +44,7 @@
             <td><%= employees[i].mobile%></td>
             <td><%= employees[i].departmentName%></td>
             <td><%= employees[i].city%></td>
+            <td><%= employees[i].gender%></td>
             <td>
                 <a href="/employee/view/<%= employees[i].id%>"><i class="fa fa-list" aria-hidden="true"></i></a> &nbsp;
                 <a href="/employee/edit/<%= employees[i].id%>"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>&nbsp;
