@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="employee-management-system/src/main/java"/>
-	<classpathentry kind="lib" path="employee-management-system/bin/.mvn/wrapper/maven-wrapper.jar"/>
-	<classpathentry kind="output" path="employee-management-system/target/classes"/>
-</classpath>
